@@ -52,6 +52,7 @@ function strip(name) {
   return name.replace(/^(a |the |an )/i, '').trim(); //this is a regexp
 }
 
+
 const sortedBands = bands.sort(function(a, b) {
   if (strip(a) > strip(b)) {
     return 1;
@@ -60,10 +61,13 @@ const sortedBands = bands.sort(function(a, b) {
   }
 });
 
+//another way to define const sortedBands using a ternary operator
+// const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1); //ternary function does the exact same thing as the above code in one line
+
 document.querySelector('#bands').innerHTML =
   sortedBands
-    .map(band => `<li>${band}</li>`)
-    .join('')
+    .map(band => `<li>${band}</li>`) // map loops over the different band names
+    .join('') // makes it into one big string rather than a bunch of strings with a comma in between
 
 console.log(sortedBands);
 
